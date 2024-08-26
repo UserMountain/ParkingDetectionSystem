@@ -1,0 +1,210 @@
+/* General Reset and Body */
+body {
+    margin: 0;
+    font-family: 'Roboto', Arial, sans-serif; /* Updated font for a modern look */
+    background: linear-gradient(144deg, #BC00DD, #B100E8, #A100F2, #8900F2); /* Gradient background */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center; /* Center content vertically */
+}
+
+/* Main Title */
+.main-title {
+    font-family: 'Montserrat', sans-serif; /* Use a more elegant font */
+    font-size: 3rem; /* Increase font size */
+    font-weight: 700; /* Make the font bold */
+    text-align: center; /* Center the text */
+    color: #ffffff; /* White color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    margin: 20px 0; /* Add some margin */
+}
+
+/* Header */
+header {
+    background-color: #000;
+    padding: 10px 20px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo and Nav Toggle */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #f0f0f0;
+}
+
+.floating-nav {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 10;
+}
+
+.floating-nav.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav-toggle.active {
+    transform: rotate(90deg);
+}
+
+.floating-nav a:hover {
+    background-color: #0056b3;
+}
+
+.nav-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+@media (max-width: 768px) {
+    .floating-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .floating-nav a {
+        display: block;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+}
+
+/* Main Section */
+main {
+    flex: 1; /* Ensures that the main content takes up available space */
+}
+
+/* Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+/* Streaming Layout */
+.streaming-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 1400px;
+    margin-top: 20px;
+}
+
+#stream-container {
+    background: #000;
+    border: 2px solid #fff;
+    border-radius: 15px;
+    padding: 150px;
+}
+
+#live-video {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.action-button {
+    background-color: #DB00B6;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.action-button:hover {
+    background-color: #B6009A;
+}
+
+.end-button {
+    background-color: #E60000;
+}
+
+.end-button:hover {
+    background-color: #C60000;
+}
+
+.instruction-box {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    padding: 20px;
+    color: #fff;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.toggle-button {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+/* Footer */
+footer {
+    background-color: #1a1a1a;
+    padding: 15px 20px;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+}
+
+/* Footer Links */
+footer nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 16px;
+}
+
+footer nav a:hover {
+    text-decoration: underline;
+}

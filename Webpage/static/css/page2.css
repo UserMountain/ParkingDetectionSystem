@@ -1,0 +1,249 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', Arial, sans-serif; /* Updated font for a modern look */
+    background: linear-gradient(144deg, #BC00DD, #B100E8, #A100F2, #8900F2); /* Gradient background */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center; /* Center content vertically */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: 300; /* Lighter font weight for headings */
+}
+
+img {
+    max-width: 100%;
+    border-radius: 5px; /* Rounded corners for all images */
+}
+
+.container {
+    max-width: 800px; /* Adjusted max-width for better spacing */
+    margin: auto; /* Ensure it's centered */
+    padding: 20px;
+    background-color: #222; /* Slight background to container for depth */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4); /* Subtle shadow for 3D effect */
+}
+
+header {
+    background-color: #000;
+    padding: 10px 20px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.floating-nav {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 10;
+}
+
+.floating-nav.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav-toggle.active {
+    transform: rotate(90deg);
+}
+
+.floating-nav a:hover {
+    background-color: #0056b3;
+}
+
+.nav-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .floating-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .floating-nav a {
+        display: block;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+}
+
+#upload {
+    padding: 40px; /* Increased padding for better spacing */
+    text-align: center;
+    flex: 1;
+}
+
+#upload h1 {
+    font-size: 2.5em; /* Larger font size for main heading */
+    margin-bottom: 20px;
+}
+
+#upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between the elements */
+}
+
+.file-input-label {
+    display: inline-block;
+    padding: 12px 24px; /* Larger padding for more clickable area */
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.file-input-label:hover {
+    background-color: #0056b3;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+#image-input {
+    display: none;
+}
+
+#edit-license-text {
+    width: calc(100% - 40px); /* Make sure the input field doesn't exceed the container width */
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center; /* Center button group horizontally */
+    margin-top: 20px; /* Added space above the button group */
+}
+
+.action-button {
+    padding: 12px 24px; /* Larger buttons */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: linear-gradient(145deg, #3a3a3a, #1c1c1c); /* Gradient background */
+    color: #fff;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Smooth transition for effects */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.action-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+.save-button {
+    background: linear-gradient(145deg, #28a745, #218838); /* Gradient for save button */
+}
+
+.save-button:hover {
+    background: linear-gradient(145deg, #218838, #1e7e34); /* Hover gradient */
+}
+
+.delete-button {
+    background: linear-gradient(145deg, #dc3545, #c82333); /* Gradient for delete button */
+}
+
+.delete-button:hover {
+    background: linear-gradient(145deg, #c82333, #bd2130); /* Hover gradient */
+}
+
+.prev-button, .next-button, .edit-button {
+    background: linear-gradient(145deg, #007bff, #0056b3); /* Gradient for navigation buttons */
+}
+
+.prev-button:hover, .next-button:hover, .edit-button:hover {
+    background: linear-gradient(145deg, #0056b3, #004085); /* Hover gradient */
+}
+
+footer {
+    background-color: #111;
+    padding: 20px;
+    text-align: center;
+    margin-top: auto;
+}
+
+footer nav a {
+    margin: 0 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.results-display {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#preview-image {
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+#license-plate-number {
+    color: #4CAF50;
+    font-size: 1.5em; /* Larger font size for emphasis */
+    margin-top: 10px;
+}
+
+#total-images {
+    font-size: 1.2em; /* Increased font size for better visibility */
+    margin-top: 20px; /* Added space above the total images display */
+    color: #4CAF50; /* Same color as license plate number for consistency */
+    text-align: center; /* Center the text */
+}

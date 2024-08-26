@@ -1,0 +1,412 @@
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    background: linear-gradient(135deg, rgba(102, 51, 153, 0.3), rgba(0, 102, 255, 0.3)); /* More transparent purple-blue gradient */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.navbar-nav {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-nav .nav-item {
+    margin-right: 20px;
+}
+
+.navbar-nav .nav-link {
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 25px; /* Rounded corners */
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: transparent; /* Invisible by default */
+    transition: background-color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #fff; /* Text color stays white */
+    background-color: rgba(255, 255, 255, 0.1); /* Light background for hover */
+}
+
+.navbar-nav .nav-link:hover::after {
+    background-color: #8e44ad; /* Purple color */
+}
+
+.navbar-nav .nav-link.active {
+    color: #fff;
+    background-color: #16a085; /* Cyan background for active link */
+}
+
+.navbar-nav .nav-link.active::after {
+    background-color: #16a085; /* Cyan color for active link */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    padding-right: 1200px;
+    background: url('/static/images/webpage banner.png') left center / cover no-repeat;
+}
+
+#hero .container {
+    padding-left: 20%;
+    max-width: 800px;
+}
+
+#hero .container p {
+    text-align: justify;
+    max-width: 700px;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.button {
+    margin-top: 10px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f60;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+    background-color: #e55;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+#features, #faq, #blog, #contact {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.feature-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.feature-tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid #333;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.feature-tab.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.tab-content .tabpanel {
+    display: none;
+}
+
+.tab-content .tabpanel.active {
+    display: block;
+}
+
+.blog-item {
+    margin-bottom: 40px;
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form input, form textarea {
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #000;
+    color: #fff;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    background-color: #111;
+    padding: 20px;
+    text-align: center;
+}
+
+footer nav a {
+    margin: 0 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.lorem_system {
+    font-size: 1.2em;
+    line-height: 1.6em;
+    margin-bottom: 30px;
+    color: #F4DDE0; /* Adjust as needed */
+    text-align: justify;
+    max-width: 600px; /* Reduce horizontal length */
+    margin: 0 auto;
+    padding-left: 0%; /* Move content to the right */
+}
+
+.button:hover {
+    background-color: #DB00B6; /* Hover color */
+}
+
+/* Choose Section */
+.choose_section {
+    width: 100%;
+    float: left;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.title_system {
+    font-size: 2.5em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333; /* Adjust as needed */
+}
+
+.color2 {
+    color: #F7F9F2;
+}
+
+.choose_text {
+    color: #030907;
+    font-weight: 600;
+    font-size: 2.5em;
+}
+
+.lorem_text {
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+.color {
+    color: #2aaf80;
+}
+
+.choose_section_2 {
+    width: 100%;
+    float: left;
+}
+
+.power_full, .power {
+    background-color: #ffffff;
+    border-radius: 30px;
+    padding: 20px;
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.power_full {
+    background-color: #2aaf80;
+}
+
+.powerful_text, .totaly_text {
+    margin-top: 20px;
+}
+
+.powerful_text {
+    color: #ffffff;
+}
+
+.totaly_text {
+    color: #000;
+}
+
+.making_tetx, .making {
+    margin-top: 20px;
+}
+
+.making_tetx {
+    color: #ffffff;
+}
+
+.making {
+    color: #000;
+}
+
+.read_bt {
+    height: 50px;
+    width: 100%;
+    border-radius: 11px;
+    border: 0px;
+    color: #ffffff;
+    background-color: #000;
+    font-size: 17px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.read_bt a {
+    color: #ffffff;
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 50px;
+    text-decoration: none;
+}
+
+.read_bt a:hover {
+    color: #ffffff;
+}
+
+@media (min-width: 768px) {
+    .navbar-nav .nav-link {
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-nav .nav-link {
+        margin-right: 15px;
+        padding-left: 0;
+    }
+
+    .feature-tabs {
+        flex-direction: column;
+    }
+
+    #hero {
+        padding-left: 20px;
+        justify-content: center;
+    }
+}
+
+/* General icon styling */
+.icon i {
+    font-size: 50px; /* Adjust size as needed */
+    color: #2aaf80; /* Default icon color */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Hover effect for containers */
+.choose_section_2 .power_full:hover .icon i,
+.choose_section_2 .power:hover .icon i {
+    color: #fff; /* Icon color on hover */
+}
+
+/* Highlight effect for the entire container */
+.choose_section_2 .power_full:hover,
+.choose_section_2 .power:hover {
+    background-color: #2aaf80; /* Background color on hover */
+    color: #fff; /* Text color on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2); /* Optional shadow for a lifted effect */
+}
+
+/* Text color specific to the hovered container */
+/* Ensure text color is black by default */
+.choose_section_2 .power_full .powerful_text,
+.choose_section_2 .power_full .making_tetx,
+.choose_section_2 .power .totaly_text,
+.choose_section_2 .power .making {
+    color: #000; /* Black text color by default */
+}
+
+/* Update hover effects to change text color to white */
+.choose_section_2 .power_full:hover .powerful_text,
+.choose_section_2 .power_full:hover .making_tetx,
+.choose_section_2 .power:hover .totaly_text,
+.choose_section_2 .power:hover .making {
+    color: #fff; /* White text color on hover */
+}
+
+/* Adjust icon color on hover */
+.choose_section_2 .power_full:hover .icon i,
+.choose_section_2 .power:hover .icon i {
+    color: #fff; /* White icon color on hover */
+}
+
+/* Highlight effect for the entire container */
+.choose_section_2 .power_full:hover,
+.choose_section_2 .power:hover {
+    background-color: #2aaf80; /* Background color on hover */
+    color: #fff; /* Text color on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2); /* Optional shadow for a lifted effect */
+}
+
+/* Default styling for containers */
+.choose_section_2 .power {
+    background-color: #fff; /* Default background color */
+    color: #000; /* Default text color */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.choose_section_2 .power_full {
+    background-color: #fff; /* Default background color */
+    color: #000; /* Default text color */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}

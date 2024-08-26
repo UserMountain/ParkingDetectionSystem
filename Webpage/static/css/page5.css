@@ -1,0 +1,209 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', Arial, sans-serif; /* Updated font for a modern look */
+    background: linear-gradient(144deg, #BC00DD, #B100E8, #A100F2, #8900F2); /* Gradient background */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center; /* Center content vertically */
+}
+
+.container {
+    flex: 1;
+}
+
+header {
+    background-color: #000;
+    padding: 10px 20px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #f0f0f0;
+}
+
+.menu a {
+    margin-left: 20px;
+}
+
+#vehicle-management {
+    padding: 60px 20px;
+    text-align: center;
+    flex: 1;
+}
+
+#vehicle-management h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#vehicle-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#vehicle-table img {
+    width: 50px;  /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Optional: adds rounded corners to the image */
+}
+
+#vehicle-table th, #vehicle-table td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+#vehicle-table th {
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+footer {
+    background-color: #111;
+    padding: 20px;
+    text-align: center;
+    margin-top: auto;
+    width: 100%;
+}
+
+footer nav a {
+    margin: 0 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.floating-nav {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 10;
+}
+
+.floating-nav.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.nav-toggle.active {
+    transform: rotate(90deg);
+}
+
+.floating-nav a:hover {
+    background-color: #0056b3;
+}
+
+.nav-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .floating-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .floating-nav a {
+        display: block;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+}
+
+.delete-button {
+    --b: 3px;   /* border thickness */
+    --s: .45em; /* size of the corner */
+    --color: #DC3545; /* Red color for delete button */
+
+    padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+    color: #FFFFFF;
+    --_p: var(--s);
+    background:
+        conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+        var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+    transition: .3s linear, color 0s, background-color 0s;
+    outline: var(--b) solid #0000;
+    outline-offset: .6em;
+    font-size: 16px; /* Smaller font size */
+    border: 0;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.delete-button:hover,
+.delete-button:focus-visible {
+    --_p: 0px;
+    outline-color: var(--color);
+    outline-offset: .05em;
+}
+
+.delete-button:active {
+    background: var(--color);
+    color: #fff;
+}
+
+@media (min-width: 768px) {
+    .delete-button {
+        font-size: 18px; /* Adjusted font size for larger screens */
+        min-width: 140px; /* Adjusted width for larger screens */
+        padding: 14px 20px; /* Adjusted padding for larger screens */
+    }
+}
+
+/* Center the button within the cell and align it to the right */
+.table-actions {
+    display: flex;
+    justify-content: flex-end; /* Align button to the right */
+    align-items: center; /* Center vertically */
+    height: 100%; /* Ensure the height is full to center vertically */
+}
+
+td {
+    vertical-align: middle; /* Vertically center content in table cells */
+}
