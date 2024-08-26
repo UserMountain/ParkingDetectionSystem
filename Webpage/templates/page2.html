@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image - VPPS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/page2.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <a class="logo" href="{{ url_for('index') }}">EsPAV8</a>
+            <button id="nav-toggle" class="nav-toggle">☰</button>
+            <div class="floating-nav" id="nav-menu">
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('page1') }}">Live Streaming</a>
+                <a href="{{ url_for('page2') }}" class="active">Upload Image</a>
+                <a href="{{ url_for('page5') }}">Vehicle Management</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="upload">
+            <div class="container">
+                <h1>Upload Image</h1>
+                <form id="upload-form">
+                    <div class="form-group">
+                        <label class="file-input-label" for="image-input">Choose Image</label>
+                        <input type="file" id="image-input" name="image_name" accept="image/*" required>
+                        <button class="action-button save-button" type="submit">Upload</button>
+                    </div>
+                </form>
+                </form>
+                <div class="results-display">
+                    <h2>Predicted Image:</h2>
+                    <img id="preview-image" alt="Processed Image" style="display:none;">
+                    <p id="license-plate-number">Detected License Plate: <span id="license-text">N/A</span></p>
+                    <input type="text" id="edit-license-text" style="display:none;">
+                </div>
+                <div class="button-group">
+                    <button id="prev-button" class="action-button prev-button">Previous</button>
+                    <button id="next-button" class="action-button next-button">Next</button>
+                </div>
+                <div class="button-group">
+                    <button id="save-button" class="action-button save-button">Save</button>
+                    <button id="delete-button" class="action-button delete-button">Delete</button>
+                    <button id="edit-button" class="action-button edit-button">Edit</button>
+                </div>
+                <p id="total-images">Total Images: 0</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Traffic Department, UITM Tapah</p>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="https://www.facebook.com/">Facebook</a>
+            <a href="https://www.instagram.com/">Instagram</a>
+            <a href="https://www.youtube.com/">YouTube</a>
+        </nav>
+        <p>VPPS © 2024</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/common.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/upload-plate.js') }}"></script>
+</body>
+</html>

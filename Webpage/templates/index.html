@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vehicle Parking Patrol System (VPPS) offers advanced vehicle management and monitoring solutions.">
+    <title>EspaV8</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preload" href="{{ url_for('static', filename='css/style.css') }}" as="style">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <main>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand logo" href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/espaV8-logo.png') }}" alt="ESPaV8" style="height: 50px; vertical-align: middle;"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('page1') }}">Live Streaming</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('page2') }}">Upload Image</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('page5') }}">Vehicle Management</a>
+                </li>
+            </ul>
+        </div>
+        </nav>
+        <section id="hero">
+            <div class="container">
+                <h1 class="title_system">Future <span class="color2">Security Prototype</span></h1>
+                <p class="lorem_system">Welcome to Espav8, where we use advanced drone technology and the YOLOv8 model to detect illegal parking efficiently. Our drones capture images of parking lots, and the YOLOv8 model analyzes these images in real-time to identify and classify vehicles, ensuring proper parking management.</p>
+                <a class="button" href="{{ url_for('page1') }}">Get Started</a>
+            </div>
+        </section>
+
+
+        <!-- Choose Section -->
+        <div id="about" class="choose_section">
+            <div class="container">
+                <div class="col-12 text-center">
+                    <h1 class="choose_text">Why should you <span class="color">choose us</span></h1>
+                    <p class="lorem_text">The system was created to deliver a modern security that has been applied all around the world, the system has applied a drone as a guard service to act as better security eyes.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="choose_section_2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="power_full text-center highlighted">
+                            <div class="icon">
+                                <a href="#"><i class="fas fa-broadcast-tower"></i></a>
+                            </div>
+                            <h2 class="powerful_text">Live Features</h2>
+                            <p class="making_tetx">Broadcasting a live from drone view in security. You can observed the parking areas using the image. </p>
+                            <div class="btn_main">
+                                <button type="button" class="read_bt"><a href="{{ url_for('page1') }}">Click Here</a></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="power text-center">
+                            <div class="icon">
+                                <a href="#"><i class="fas fa-upload"></i></a>
+                            </div>
+                            <h2 class="totaly_text">Uploading Feature</h2>
+                            <p class="making">By uploading the images of license plate of vehicle. You can extract the number plate from image using lastest OCR Tessaract Technology.</p>
+                            <div class="btn_main">
+                                <button type="button" class="read_bt"><a href="{{ url_for('page2') }}">Click Here</a></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="power text-center">
+                            <div class="icon">
+                                <a href="#"><i class="fas fa-cogs"></i></a>
+                            </div>
+                            <h2 class="totaly_text">Management Feature</h2>
+                            <p class="making">Making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still.</p>
+                            <div class="btn_main">
+                                <button type="button" class="read_bt"><a href="{{ url_for('page5') }}">Click Here</a></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <section id="contact">
+            <h2>SEND US YOUR FEEDBACK</h2>
+            <form>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Subject</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>Traffic Department, UITM Tapah</p>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+        </nav>
+        <p>VPPS © 2024</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/index.js') }}" async></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const tabs = document.querySelectorAll(".feature-tab");
+        const panels = document.querySelectorAll(".tabpanel");
+
+        tabs.forEach(tab => {
+            tab.addEventListener("click", function() {
+                // Remove active class from all tabs
+                tabs.forEach(tab => tab.classList.remove("active"));
+
+                // Add active class to the clicked tab
+                tab.classList.add("active");
+
+                // Hide all tab panels
+                panels.forEach(panel => panel.classList.remove("active"));
+
+                // Show the corresponding tab panel
+                const tabId = tab.getAttribute("data-tab");
+                document.getElementById(`tab-${tabId}`).classList.add("active");
+            });
+        });
+    });
+    </script>
+</body>
+</html>

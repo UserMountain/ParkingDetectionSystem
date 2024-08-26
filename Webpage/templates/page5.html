@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/page5.css') }}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <a class="logo" href="{{ url_for('index') }}">EsPAV8</a>
+            <button id="nav-toggle" class="nav-toggle">☰</button>
+            <div class="floating-nav" id="nav-menu">
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('page1') }}">Live Streaming</a>
+                <a href="{{ url_for('page2') }}">Upload Image</a>
+                <a href="{{ url_for('page5') }}" class="active">Vehicle Management</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="vehicle-management" class="py-5">
+            <div class="container">
+                <h1 class="mb-4">Vehicle Management</h1>
+                <table id="vehicle-table" class="table table-striped table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Image</th>
+                            <th>Extracted Text</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in image_data %}
+                        <tr id="data-row-{{ data.id }}">
+                            <td>{{ data.id }}</td>
+                            <td><img src="{{ url_for('static', filename=data.image_path) }}" alt="Uploaded Image" class="img-thumbnail" style="width: 100px;"></td>
+                            <td>{{ data.text_data }}</td>
+                            <td>
+                                <button class="btn btn-danger btn-sm delete-button" data-id="{{ data.id }}">Delete</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Traffic Department, UITM Tapah</p>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="https://www.facebook.com/">Facebook</a>
+            <a href="https://www.instagram.com/">Instagram</a>
+            <a href="https://www.youtube.com/">YouTube</a>
+        </nav>
+        <p>VPPS © 2024</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/common.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/page5.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Live streaming and drone management platform for UITM Tapah Traffic Department.">
+    <title>Live Streaming - VPPS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/page1.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a class="logo" href="{{ url_for('index') }}">EsPAV8</a>
+            <button id="nav-toggle" class="nav-toggle" aria-label="Toggle Navigation"></button>
+            <div class="floating-nav" id="nav-menu">
+                <a href="{{ url_for('index') }}" aria-label="Home">Home</a>
+                <a href="{{ url_for('page1') }}" class="active" aria-label="Live Streaming">Live Streaming</a>
+                <a href="{{ url_for('page2') }}" aria-label="Upload Image">Upload Image</a>
+                <a href="{{ url_for('page5') }}" aria-label="Vehicle Management">Vehicle Management</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="live-streaming" class="active">
+            <div class="container">
+                <h1 class="main-title">Live Streaming</h1>
+                <h2 id="drone-status"></h2>
+                <div class="streaming-layout">
+                    <div id="stream-container">
+                        <img id="live-video" src="/video_feed" alt="No live stream available">
+                         <div id="no-stream-icon"><i class="fas fa-video"></i></div> <!-- This icon indicates no stream -->
+                        <div id="live-icon" class="hidden">Live</div> <!-- This icon indicates the stream is live -->
+                    </div>
+                    <div class="button-container">
+                        <button id="start-stream" class="action-button">
+                            <span class="icon"></span> Start Stream
+                        </button>
+                        <button id="end-stream" class="action-button end-button">
+                            <span class="icon"></span> End Stream
+                        </button>
+                    </div>
+                </div>
+                <div class="instruction-box" id="instruction-box">
+                    <button id="toggle-instructions" class="toggle-button">
+                        <span class="icon">❓</span> Toggle Instructions
+                    </button>
+                    <div class="instructions-content" style="display: none;">
+                        <h3>Instructions</h3>
+                        <ul>
+                            <li>Here the page for monitor the live stream through drone view </li>
+                            <li>Below are intructions for keybind that can be used in drone</li>
+                        </ul>
+                        <h3>Movement Keys</h3>
+                        <ul>
+                            <li>Left Arrow: Move Left</li>
+                            <li>Right Arrow: Move Right</li>
+                            <li>W: Move Up</li>
+                            <li>S: Move Down</li>
+                            <li>Up Arrow: Move Forward</li>
+                            <li>Down Arrow: Move Backward</li>
+                            <li>A: Rotate Left</li>
+                            <li>D: Rotate Right</li>
+                            <li>Q: Land</li>
+                            <li>E: Takeoff</li>
+                            <li>Enter: Capture Image</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Traffic Department, UITM Tapah</p>
+        <nav>
+            <a href="{{ url_for('index') }}" aria-label="Home">Home</a>
+        </nav>
+        <p>VPPS © 2024</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/common.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/live-stream.js') }}" async></script>
+    <script src="{{ url_for('static', filename='js/drone_control.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.getElementById('toggle-instructions');
+            const instructionContent = document.querySelector('.instructions-content');
+
+            toggleButton.addEventListener('click', function() {
+                const isDisplayed = instructionContent.style.display === 'block';
+                instructionContent.style.display = isDisplayed ? 'none' : 'block';
+                toggleButton.textContent = isDisplayed ? '❓ Show Instructions' : '❓ Hide Instructions';
+            });
+
+            const startStreamButton = document.getElementById('start-stream');
+            const endStreamButton = document.getElementById('end-stream');
+            const video = document.getElementById('live-video');
+            const noStreamIcon = document.getElementById('no-stream-icon');
+            const liveIcon = document.getElementById('live-icon');
+
+            function startStream() {
+                fetch('/start_stream', { method: 'POST' })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            video.src = '/video_feed';
+                            noStreamIcon.classList.add('hidden');
+                            liveIcon.classList.remove('hidden');
+                        } else {
+                            alert('Failed to start video stream: ' + data.error);
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+
+            function endStream() {
+                fetch('/end_stream', { method: 'POST' })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            video.src = '';
+                            noStreamIcon.classList.remove('hidden');
+                            liveIcon.classList.add('hidden');
+                        } else {
+                            alert('Failed to end video stream.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Error ending video stream.');
+                    });
+            }
+
+            startStreamButton.addEventListener('click', startStream);
+            endStreamButton.addEventListener('click', endStream);
+        });
+    </script>
+    <script>
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                fetch('/capture_image', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        console.log('Image captured:', data.filename);
+                    } else {
+                        console.error('Error capturing image:', data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
